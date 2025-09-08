@@ -34,6 +34,14 @@ export default function Header() {
                                                 </button>
                                                 {isAuthenticated && (
                                                         <button 
+                                                                onClick={() => navigate('/contests')}
+                                                                className="text-black hover:text-gray-600 transition-colors font-medium px-3 py-2 rounded-lg hover:bg-gray-100"
+                                                        >
+                                                                Contests
+                                                        </button>
+                                                )}
+                                                {isAuthenticated && (
+                                                        <button 
                                                                 onClick={() => navigate('/submissions')}
                                                                 className="text-black hover:text-gray-600 transition-colors font-medium px-3 py-2 rounded-lg hover:bg-gray-100"
                                                         >
@@ -41,7 +49,7 @@ export default function Header() {
                                                         </button>
                                                 )}
                                                 {/* Dashboard Dropdown */}
-                                                {isAuthenticated && (
+                                                {/* {isAuthenticated && (
                                                     <div className="relative group">
                                                         <button className="text-black hover:text-gray-600 transition-colors font-medium px-3 py-2 rounded-lg hover:bg-gray-100 flex items-center gap-1">
                                                             Dashboard
@@ -59,7 +67,60 @@ export default function Header() {
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                )}
+                                                )} */}
+                                                {/* Dashboard Dropdown */}
+{isAuthenticated && (
+  <div className="relative group">
+    <button
+      onClick={() => navigate('/dashboard')}
+      className="text-black hover:text-gray-600 transition-colors font-medium px-3 py-2 rounded-lg hover:bg-gray-100 flex items-center gap-1"
+    >
+      Dashboard
+      <svg
+        className="w-4 h-4 ml-1"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </button>
+
+    {/* Dropdown Menu */}
+    <ul className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-50">
+      <li>
+        <button
+          onClick={() => navigate('/dashboard/accept-topics')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+        >
+          Accept Topics
+        </button>
+      </li>
+      <li>
+        <button
+          onClick={() => navigate('/dashboard/post-topic')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+        >
+          Post Topic
+        </button>
+      </li>
+      <li>
+        <button
+          onClick={() => navigate('/dashboard/messages')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+        >
+          Messaging
+        </button>
+      </li>
+    </ul>
+  </div>
+)}
+
                                                 <UserDropdown />
                                         </div>
                 </div>

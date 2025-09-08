@@ -2,6 +2,7 @@ import { Server } from 'socket.io';
 import http from 'http';
 import Message from './models/Message.js';
 import Topic from './models/Topic.js';
+import { setIO } from './socketInstance.js';
 
 export default function setupSocket(server) {
   const io = new Server(server, {
@@ -11,7 +12,18 @@ export default function setupSocket(server) {
     }
   });
 
+  // expose io globally via getter
+  setIO(io);
+
   io.on('connection', (socket) => {
+    // contests: join room for specific contest leaderboard updates
+    socket.on('contest:join', ({ contestId }) => {
+      if (contestId) socket.join(`contest_${contestId}`);
+    });
+
+    socket.on('contest:leave', ({ contestId }) => {
+      if (contestId) socket.leave(`contest_${contestId}`);
+    });
     // Join chatroom for a topic (only poster and accepted creator allowed)
     socket.on('joinRoom', async ({ topicId, userId }) => {
       try {

@@ -210,7 +210,10 @@ const Problems = () => {
                                 </div>
 
                                 <div className="mt-4 pt-4 border-t border-gray-300">
-                                    <button className="text-black hover:text-gray-600 font-medium transition-colors border-b border-black hover:border-gray-600">
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); navigate(`/problem/${problem._id}`); }}
+                                        className="text-black hover:text-gray-600 font-medium transition-colors border-b border-black hover:border-gray-600"
+                                    >
                                         Solve Problem →
                                     </button>
                                 </div>

@@ -16,6 +16,12 @@ import Home from './pages/home.jsx';
 import UserDashboard from './pages/UserDashboard.jsx';
 import CreatorDashboard from './pages/CreatorDashboard.jsx';
 import Dashboard from './pages/dashboard.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
+import Contests from './pages/Contests.jsx';
+import ContestDetail from './pages/ContestDetail.jsx';
+import ContestLeaderboard from './pages/ContestLeaderboard.jsx';
+import ContestProblem from './pages/ContestProblem.jsx';
+import AdminContestCreate from './pages/AdminContestCreate.jsx';
 import { Route, Routes } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
@@ -109,6 +115,32 @@ function AppContent() {
           <Route 
             path='/dashboard/messages' 
             element={<PrivateRoute element={<Messaging />} title="Messaging" />} 
+          />
+          {/* Admin Routes */}
+          <Route 
+            path='/admin' 
+            element={<PrivateRoute element={<AdminDashboard />} title="Admin Dashboard" />} 
+          />
+          {/* Contest Routes */}
+          <Route 
+            path='/contests' 
+            element={<PrivateRoute element={<Contests />} title="Contests" />} 
+          />
+          <Route 
+            path='/contests/:contestId' 
+            element={<PrivateRoute element={<ContestDetail />} title="Contest" />} 
+          />
+          <Route 
+            path='/contests/:contestId/leaderboard' 
+            element={<PrivateRoute element={<ContestLeaderboard />} title="Leaderboard" />} 
+          />
+          <Route 
+            path='/contests/:contestId/problems/:problemId' 
+            element={<PrivateRoute element={<ContestProblem />} title="Contest Problem" />} 
+          />
+          <Route
+            path='/admin/contests/create'
+            element={<PrivateRoute element={<AdminContestCreate />} title="Create Contest" />} 
           />
         </Routes>
       </div>
