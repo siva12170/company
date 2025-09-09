@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import io from 'socket.io-client';
+import socket from '../utils/socket';
 import axios from 'axios';
-
-const socket = io(import.meta.env.VITE_API_URL, { withCredentials: true });
 
 export default function ChatRoom({ topicId, userId }) {
   const [messages, setMessages] = useState([]);
@@ -10,8 +8,8 @@ export default function ChatRoom({ topicId, userId }) {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    if (!topicId) return;
-    socket.emit('joinRoom', { topicId });
+    if (!topicId || !userId) return;
+    socket.emit('joinRoom', { topicId, userId });
     axios.get(`/api/v1/messages/${topicId}`)
       .then(res => setMessages(res.data));
     socket.on('newMessage', msg => {
@@ -20,7 +18,7 @@ export default function ChatRoom({ topicId, userId }) {
     return () => {
       socket.off('newMessage');
     };
-  }, [topicId]);
+  }, [topicId, userId]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

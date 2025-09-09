@@ -21,22 +21,20 @@ export default function Messaging() {
   }, [location]);
 
   useEffect(() => {
-    if (!topicId) return;
+    if (!topicId || !user?._id) return;
     setLoading(true);
     axios.get(`/api/v1/messages/${topicId}`)
       .then(res => setMessages(Array.isArray(res.data) ? res.data : res.data.data || []))
       .catch(() => setError('Failed to load messages'))
       .finally(() => setLoading(false));
-    if (user?._id) {
-      socket.emit('joinRoom', { topicId, userId: user._id });
-    }
+    socket.emit('joinRoom', { topicId, userId: user._id });
     socket.on('newMessage', msg => {
       if (msg && msg.topicId === topicId) setMessages(m => [...m, msg]);
     });
     return () => {
       socket.off('newMessage');
     };
-  }, [topicId]);
+  }, [topicId, user?._id]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
