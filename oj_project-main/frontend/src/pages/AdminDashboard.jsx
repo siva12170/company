@@ -458,7 +458,7 @@ const UserCreateModal = ({ onClose, onCreated }) => {
                 <input className="w-full px-3 py-2 border rounded" placeholder="Full name" value={form.fullName} onChange={e=>setForm({...form, fullName:e.target.value})} required />
                 <input className="w-full px-3 py-2 border rounded" placeholder="Username" value={form.username} onChange={e=>setForm({...form, username:e.target.value})} required />
                 <input className="w-full px-3 py-2 border rounded" placeholder="Email" type="email" value={form.email} onChange={e=>setForm({...form, email:e.target.value})} required />
-                <input className="w-full px-3 py-2 border rounded" placeholder="Password" type="password" value={form.password} onChange={e=>setForm({...form, password:e.target.value})} required />
+                <input className="w-full px-3 py-2 border rounded" placeholder="Secret Key" type="password" value={form.password} onChange={e=>setForm({...form, password:e.target.value})} required />
                 <select className="w-full px-3 py-2 border rounded" value={form.accType} onChange={e=>setForm({...form, accType:e.target.value})}>
                     <option value="User">User</option>
                     <option value="Problemsetter">Problemsetter</option>

@@ -90,16 +90,16 @@ const Problems = () => {
     }
 
     return (
-        <div className="bg-white text-black min-h-screen p-6">
+        <div className="bg-white text-black min-h-screen p-4 sm:p-6">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="mb-8">
-                    <h1 className="text-3xl font-bold mb-2 text-black">Problems</h1>
+                <div className="mb-4 sm:mb-8">
+                    <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-black">Problems</h1>
                     <p className="text-gray-600">Challenge yourself with coding problems</p>
                 </div>
 
                 {/* Filters */}
-                <div className="bg-white rounded-lg p-6 mb-6 border-2 border-black">
+                <div className="bg-white rounded-lg p-4 sm:p-6 mb-6 border-2 border-black">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label htmlFor="search" className="block text-sm font-medium mb-2 text-black">
@@ -165,16 +165,16 @@ const Problems = () => {
                         {problems.map((problem) => (
                             <div 
                                 key={problem._id} 
-                                className="bg-white rounded-lg p-6 border-2 border-black hover:border-gray-600 transition-colors cursor-pointer hover:shadow-lg"
+                                className="bg-white rounded-lg p-4 sm:p-6 border-2 border-black hover:border-gray-600 transition-colors cursor-pointer hover:shadow-lg"
                                 onClick={() => navigate(`/problem/${problem._id}`)}
                             >
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-semibold mb-2 text-black hover:text-gray-700 transition-colors">
+                                <div className="flex justify-between items-start mb-3 sm:mb-4">
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-lg sm:text-xl font-semibold mb-2 text-black hover:text-gray-700 transition-colors truncate">
                                             {problem.title}
                                         </h3>
-                                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-                                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(problem.difficulty)}`}>
+                                        <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-600">
+                                            <span className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium ${getDifficultyColor(problem.difficulty)}`}>
                                                 {problem.difficulty}
                                             </span>
                                             <span>Time: {problem.timeLimit}ms</span>
@@ -191,7 +191,7 @@ const Problems = () => {
                                         {problem.tags.map((tag, index) => (
                                             <span
                                                 key={index}
-                                                className="px-2 py-1 bg-black text-white rounded-full text-xs border"
+                                                className="px-2 py-1 bg-black text-white rounded-full text-[10px] sm:text-xs border"
                                             >
                                                 #{tag}
                                             </span>
@@ -214,7 +214,7 @@ const Problems = () => {
                                         onClick={(e) => { e.stopPropagation(); navigate(`/problem/${problem._id}`); }}
                                         className="text-black hover:text-gray-600 font-medium transition-colors border-b border-black hover:border-gray-600"
                                     >
-                                        Solve Problem →
+                                        Solve Quests →
                                     </button>
                                 </div>
                             </div>
@@ -224,16 +224,16 @@ const Problems = () => {
 
                 {/* Pagination */}
                 {pagination.totalPages > 1 && (
-                    <div className="flex justify-center items-center mt-8 space-x-2">
+                    <div className="flex flex-col sm:flex-row justify-center items-center mt-8 gap-3 sm:gap-2">
                         <button
                             onClick={() => setCurrentPage(pagination.currentPage - 1)}
                             disabled={!pagination.hasPrev}
-                            className="px-4 py-2 bg-white border-2 border-black hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded transition-colors text-black font-medium"
+                            className="px-4 py-2 bg-white border-2 border-black hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded transition-colors text-black font-medium w-full sm:w-auto"
                         >
                             Previous
                         </button>
                         
-                        <div className="flex space-x-1">
+                        <div className="flex flex-wrap justify-center gap-1">
                             {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
                                 let page;
                                 if (pagination.totalPages <= 5) {
@@ -265,7 +265,7 @@ const Problems = () => {
                         <button
                             onClick={() => setCurrentPage(pagination.currentPage + 1)}
                             disabled={!pagination.hasNext}
-                            className="px-4 py-2 bg-white border-2 border-black hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded transition-colors text-black font-medium"
+                            className="px-4 py-2 bg-white border-2 border-black hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded transition-colors text-black font-medium w-full sm:w-auto"
                         >
                             Next
                         </button>
@@ -275,7 +275,7 @@ const Problems = () => {
                 {/* Stats */}
                 {pagination.totalProblems > 0 && (
                     <div className="text-center text-gray-600 text-sm mt-6">
-                        Showing {((pagination.currentPage - 1) * 10) + 1} to {Math.min(pagination.currentPage * 10, pagination.totalProblems)} of {pagination.totalProblems} problems
+                        Showing {((pagination.currentPage - 1) * 10) + 1} to {Math.min(pagination.currentPage * 10, pagination.totalProblems)} of {pagination.totalProblems} Quests
                     </div>
                 )}
             </div>

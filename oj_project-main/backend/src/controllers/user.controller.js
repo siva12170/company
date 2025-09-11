@@ -113,7 +113,8 @@ export const logoutUser = asyncHandler(async (req, res) => {
     const cookieOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // Only secure in production
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax' // 'none' for cross-origin in production
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-origin in production
+        maxAge: 0 // Set to 0 to expire immediately
     }
     return res.status(200)
         .clearCookie("accessToken", cookieOptions)
@@ -122,41 +123,11 @@ export const logoutUser = asyncHandler(async (req, res) => {
 })
 
 export const checkAuth = asyncHandler(async (req, res) => {
-    let token = null;
-
-    // try cookie first, then Authorization header
-    if (req.cookies?.accessToken) {
-        token = req.cookies.accessToken;
-    } else if (req.header("Authorization")) {
-        // fix typo “Brearer” → “Bearer ”
-        token = req.header("Authorization").replace(/^Bearer\s+/i, "");
-    }
-
-    if (!token) {
-        return res.status(401).json(
-            new ApiResponse(401, null, "No token provided", false)
-        );
-    }
-
-    try {
-        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        // Get full user data from database
-        const user = await User.findById(decoded._id).select("-password -refreshToken");
-        
-        if (!user) {
-            return res.status(401).json(
-                new ApiResponse(401, null, "User not found", false)
-            );
-        }
-
-        return res.status(200).json(
-            new ApiResponse(200, user, "Authentication successful")
-        );
-    } catch (error) {
-        return res.status(401).json(
-            new ApiResponse(401, null, "Invalid token", false)
-        );
-    }
+    // User is already verified by verifyJWT middleware
+    // Just return the user data
+    return res.status(200).json(
+        new ApiResponse(200, req.user, "Authentication successful")
+    );
 })
 
 export const getUserProfile = asyncHandler(async (req, res) => {

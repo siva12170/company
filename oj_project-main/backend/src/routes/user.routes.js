@@ -15,7 +15,7 @@ const router = Router();
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 router.route("/logout").post(verifyJWT, logoutUser);
-router.route("/me").get(checkAuth);
+router.route("/me").get(verifyJWT, checkAuth);
 router.route("/profile").get(verifyJWT, getUserProfile);
 router.route("/update-profile").put(verifyJWT, upload.single('avatar'), updateUserProfile);
 router.route("/stats/:userId").get(getUserStats);

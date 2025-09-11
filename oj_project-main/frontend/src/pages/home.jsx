@@ -57,13 +57,13 @@ export default function Home() {
             value: 'cpp', 
             label: 'C++',
             monacoLanguage: 'cpp',
-            defaultCode: '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    return 0;\n}' 
+            defaultCode: '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    return 0;\n}\n' 
         },
         { 
             value: 'java', 
             label: 'Java',
             monacoLanguage: 'java', 
-            defaultCode: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}' 
+            defaultCode: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}\n' 
         },
         { 
             value: 'py', 
@@ -75,7 +75,7 @@ export default function Home() {
             value: 'c', 
             label: 'C',
             monacoLanguage: 'c',
-            defaultCode: '#include <stdio.h>\n\nint main() {\n    printf("Hello, World!\\n");\n    return 0;\n}' 
+            defaultCode: '#include <stdio.h>\n\nint main() {\n    printf("Hello, World!\\n");\n    return 0;\n}\n' 
         }
     ];
 
@@ -220,13 +220,16 @@ export default function Home() {
             .catch(() => setMessages([]));
         }, []);
         return (
-          <div style={{margin: '2rem 0', padding: 16, border: '1px solid #ccc', borderRadius: 8}}>
-            <h2>All Messages (Demo)</h2>
-            <ul style={{maxHeight: 200, overflowY: 'auto'}}>
+          <div className="my-8 p-4 border rounded-lg">
+            <h2 className="text-lg font-semibold mb-2">All Messages (Demo)</h2>
+            <ul className="max-h-52 overflow-y-auto space-y-1 text-sm">
               {messages.map(msg => (
-                <li key={msg._id}>
-                  <b>{msg.senderUsername || msg.senderEmail} → {msg.receiverUsername || msg.receiverEmail}:</b> {msg.message}
-                  <span style={{fontSize: 10, color: '#888'}}> ({new Date(msg.timestamp).toLocaleString()})</span>
+                <li key={msg._id} className="flex flex-wrap items-center gap-1">
+                  <span className="font-medium">{msg.senderUsername || msg.senderEmail}</span>
+                  <span>→</span>
+                  <span className="font-medium">{msg.receiverUsername || msg.receiverEmail}:</span>
+                  <span className="break-words">{msg.message}</span>
+                  <span className="text-[10px] text-gray-500">({new Date(msg.timestamp).toLocaleString()})</span>
                 </li>
               ))}
             </ul>
@@ -247,7 +250,7 @@ export default function Home() {
                 </div>
             </header>
             {/* Hero Section */}
-            <div className="relative pt-20 pb-16 overflow-hidden">
+            <div className="relative pt-14 sm:pt-16 md:pt-20 pb-12 sm:pb-14 md:pb-16 overflow-hidden">
                 {/* Background effects */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
                 <div className="absolute inset-0 backdrop-blur-sm"></div>
@@ -255,13 +258,14 @@ export default function Home() {
                 <div className="absolute right-1/4 bottom-1/4 w-[200px] h-[200px] rounded-full bg-gray-400 opacity-10 blur-[80px]"></div>
 
                 <div className="relative container mx-auto px-6 text-center">
-                    <h1 className="text-6xl font-bold text-black mb-6">
-                        Learn, Code & Crack
-                        <span className="block text-gray-700">Your Dream Job</span>
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6">
+                    Learn, Code, Teach, Repeat
+                        <span className="block text-gray-700"> -Become a True Dev.</span>
                     </h1>
                     <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                        Master coding interviews with our comprehensive platform. Practice problems, 
-                        get AI-powered feedback, and build the skills top companies are looking for.
+                        {/* Master coding interviews with our comprehensive platform. Practice problems, 
+                        get AI-powered feedback, and build the skills top companies are looking for. */}
+                        Earn knowledge by posting your doubts, gain confidence by coding, and earn money by teaching others — a community-driven platform where every learner grows into a true Dev.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button
@@ -284,7 +288,7 @@ export default function Home() {
             <div className="py-20 bg-gray-50/50 backdrop-blur-sm">
                 <div className="container mx-auto px-6">
                     <h2 className="text-4xl font-bold text-black text-center mb-16">
-                        Everything You Need to Succeed
+                        Post to learn, teach to earn.
                     </h2>
                     <div className="dashboard-card-wrapper">
                         {user?.role === 'user' && <UserDashboard user={user} />}
@@ -584,7 +588,7 @@ export default function Home() {
                                         </div>
                                         <div className="px-4 pb-4">
                                             <p className="text-xs text-gray-500">
-                                                Click any AI feature to login and access advanced problem-solving assistance
+                                                Click any AI feature to Enter and access advanced Quests-solving assistance
                                             </p>
                                         </div>
                                     </div>
@@ -598,14 +602,14 @@ export default function Home() {
             {/* Messages Section - For Demo/Testing */}
             <AllMessages />
             {/* CTA Section */}
-            <div className="py-20 bg-black text-white relative overflow-hidden">
+            {/* <div className="py-20 bg-black text-white relative overflow-hidden">
                 <div className="absolute inset-0 backdrop-blur-sm"></div>
                 <div className="absolute left-1/4 top-1/4 w-[200px] h-[200px] rounded-full bg-white opacity-5 blur-[80px]"></div>
                 <div className="absolute right-1/4 bottom-1/4 w-[150px] h-[150px] rounded-full bg-gray-400 opacity-10 blur-[60px]"></div>
                 
                 <div className="relative container mx-auto px-6 text-center">
-                    <h2 className="text-4xl font-bold mb-4">Ready to Start Your Journey?</h2>
-                    <p className="text-xl text-gray-300 mb-8">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Start Your Journey?</h2>
+                    <p className="text-lg sm:text-xl text-gray-300 mb-8">
                         {isAuthenticated 
                             ? `Welcome back, ${user?.fullName || 'User'}! Continue your coding journey.`
                             : 'Join thousands of developers who have cracked their dream jobs'
@@ -618,6 +622,27 @@ export default function Home() {
                         {isAuthenticated ? 'Continue to Dashboard' : 'Get Started Today'}
                     </button>
                 </div>
+            </div> */}
+            <div className="py-12 bg-black text-white relative overflow-hidden">
+            <div className="absolute inset-0 backdrop-blur-sm"></div>
+            <div className="absolute left-1/4 top-1/4 w-[200px] h-[200px] rounded-full bg-white opacity-5 blur-[80px]"></div>
+            <div className="absolute right-1/4 bottom-1/4 w-[150px] h-[150px] rounded-full bg-gray-400 opacity-10 blur-[60px]"></div>
+
+            <div className="relative container mx-auto px-6 text-center">
+                {/* Footer Navigation */}
+                <nav className="flex flex-wrap justify-center gap-8 mb-6 text-gray-300">
+                <a href="/" className="hover:text-white transition-colors">Home</a>
+                <a href="/dashboard" className="hover:text-white transition-colors">Dashboard</a>
+                <a href="/careers" className="hover:text-white transition-colors">Careers</a>
+                <a href="/about" className="hover:text-white transition-colors">About</a>
+                <a href="/contact" className="hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                {/* Footer Branding / Message */}
+                <p className="text-sm text-gray-400">
+                © {new Date().getFullYear()} DevPlatform. All rights reserved.
+                </p>
+            </div>
             </div>
 
             {/* Login Modal */}

@@ -28,10 +28,10 @@ function Auth({ initialView }) {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2 text-black">
-            Welcome to <span className="border-b-4 border-black">CodeJudge</span>
+            Welcome to <span className="border-b-4 border-black">"Om" or "Aum" //in//en</span>
           </h1>
           <p className="text-gray-600">
-            {isLoginView ? 'Sign in to your account' : 'Create your account'}
+            {isLoginView ? 'Enter in to your account' : 'Create your account'}
           </p>
         </div>
 

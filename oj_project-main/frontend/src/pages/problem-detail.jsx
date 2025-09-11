@@ -34,13 +34,13 @@ export default function ProblemDetail() {
             value: 'cpp', 
             label: 'C++', 
             monacoLanguage: 'cpp',
-            defaultCode: '#include <iostream>\nusing namespace std;\n\nint main() {\n    // Your code here\n    return 0;\n}' 
+            defaultCode: '#include <iostream>\nusing namespace std;\n\nint main() {\n    // Your code here\n    return 0;\n}\n' 
         },
         { 
             value: 'java', 
             label: 'Java', 
             monacoLanguage: 'java',
-            defaultCode: 'public class Main {\n    public static void main(String[] args) {\n        // Your code here\n    }\n}' 
+            defaultCode: 'public class Main {\n    public static void main(String[] args) {\n        // Your code here\n    }\n}\n' 
         },
         { 
             value: 'python', 
@@ -52,7 +52,7 @@ export default function ProblemDetail() {
             value: 'c', 
             label: 'C', 
             monacoLanguage: 'c',
-            defaultCode: '#include <stdio.h>\n\nint main() {\n    // Your code here\n    return 0;\n}' 
+            defaultCode: '#include <stdio.h>\n\nint main() {\n    // Your code here\n    return 0;\n}\n' 
         }
     ];
 
@@ -314,9 +314,9 @@ export default function ProblemDetail() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <h2 className="text-2xl font-bold text-black mb-2">Error</h2>
-                    <p className="text-gray-700 mb-4">{error}</p>
-                    <div className="space-x-4">
+                    <h2 className="text-xl sm:text-2xl font-bold text-black mb-2">Error</h2>
+                    <p className="text-gray-700 mb-4 px-4">{error}</p>
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 px-4">
                         <button
                             onClick={() => window.location.reload()}
                             className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors border-2 border-black"
@@ -345,10 +345,10 @@ export default function ProblemDetail() {
                 <div className="absolute right-1/4 bottom-1/4 w-[150px] h-[150px] rounded-full bg-gray-400 opacity-10 blur-[60px]"></div>
                 
                 <div className="relative text-center">
-                    <h2 className="text-2xl font-bold text-black mb-4">Problem not found</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-black mb-4">Problem not found</h2>
                     <button
                         onClick={() => navigate('/problems')}
-                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors border-2 border-black"
+                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg_gray-100 transition-colors border-2 border-black"
                     >
                         Back to Problems
                     </button>
@@ -358,16 +358,16 @@ export default function ProblemDetail() {
     }
 
     return (
-        <div className="min-h-screen bg-white pt-20 pb-8 relative overflow-hidden">
+        <div className="min-h-screen bg_white pt-20 pb-8 relative overflow-hidden">
             {/* Background with blur effects */}
             <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
             <div className="absolute inset-0 backdrop-blur-sm"></div>
             <div className="absolute left-1/4 top-1/4 w-[200px] h-[200px] rounded-full bg-black opacity-5 blur-[80px]"></div>
             <div className="absolute right-1/4 bottom-1/4 w-[150px] h-[150px] rounded-full bg-gray-400 opacity-10 blur-[60px]"></div>
             
-            <div className="relative container mx-auto px-6 max-w-7xl">
+            <div className="relative container mx-auto px-4 sm:px-6 max-w-7xl">
                 {/* Breadcrumb */}
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                     <button
                         onClick={() => navigate('/problems')}
                         className="flex items-center text-gray-600 hover:text-black transition-colors mb-4"
@@ -380,17 +380,17 @@ export default function ProblemDetail() {
                 </div>
 
                 {/* Main Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                     {/* Left Column - Problem Description or Submissions */}
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                         {!showSubmissions ? (
                             <>
                                 {/* Problem Header */}
-                                <div className="bg-white rounded-lg p-6 border-2 border-black shadow-xl backdrop-blur-lg">
-                                    <div className="flex justify-between items-start mb-4">
+                                <div className="bg-white rounded-lg p-4 sm:p-6 border-2 border-black shadow-xl backdrop-blur-lg">
+                                    <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-3 sm:gap-0 mb-4">
                                         <div className="flex-1">
-                                            <div className="flex items-center gap-4 mb-4">
-                                                <h1 className="text-3xl font-bold text-black">{problem.title}</h1>
+                                            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-3">
+                                                <h1 className="text-2xl sm:text-3xl font-bold text-black">{problem.title}</h1>
                                                 <button
                                                     onClick={() => setShowSubmissions(true)}
                                                     className="px-3 py-1.5 bg-white text-black border-2 border-black rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium flex items-center gap-2"
@@ -398,12 +398,12 @@ export default function ProblemDetail() {
                                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                                     </svg>
-                                                    View Submissions
+                                                    Submissions
                                                 </button>
                                             </div>
-                                            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                                            <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-600">
                                                 <span>Difficulty: 
-                                                    <span className={`ml-2 px-3 py-1 rounded-full text-xs font-medium ${getDifficultyClass(problem.difficulty)}`}>
+                                                    <span className={`ml-2 px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium ${getDifficultyClass(problem.difficulty)}`}>
                                                         {problem.difficulty}
                                                     </span>
                                                 </span>
@@ -414,7 +414,7 @@ export default function ProblemDetail() {
 
                                         {/* Verdict Display */}
                                         {hasSubmitted && verdict && (
-                                            <div className="ml-4">
+                                            <div className="sm:ml-4">
                                                 <div className={`flex items-center px-3 py-2 rounded-lg ${getVerdictClass(verdict)}`}>
                                                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
@@ -442,8 +442,8 @@ export default function ProblemDetail() {
                                 </div>
 
                                 {/* Problem Description */}
-                                <div className="bg-white rounded-lg p-6 border-2 border-black shadow-xl backdrop-blur-lg">
-                                    <h2 className="text-xl font-bold text-black mb-4">Problem Description</h2>
+                                <div className="bg-white rounded-lg p-4 sm:p-6 border-2 border-black shadow-xl backdrop-blur-lg">
+                                    <h2 className="text-lg sm:text-xl font-bold text-black mb-4">Problem Description</h2>
                                     <div className="text-gray-700 prose prose-gray max-w-none">
                                         <p className="whitespace-pre-wrap">{problem.description}</p>
                                     </div>
@@ -451,12 +451,12 @@ export default function ProblemDetail() {
 
                                 {/* Sample Test Cases */}
                                 {problem.testcases && problem.testcases.filter(tc => tc.visible).length > 0 && (
-                                    <div className="bg-white rounded-lg p-6 border-2 border-black shadow-xl backdrop-blur-lg">
-                                        <h2 className="text-xl font-bold text-black mb-4">Sample Test Cases</h2>
+                                    <div className="bg-white rounded-lg p-4 sm:p-6 border-2 border-black shadow-xl backdrop-blur-lg">
+                                        <h2 className="text-lg sm:text-xl font-bold text-black mb-4">Sample Test Cases</h2>
                                         <div className="space-y-4">
                                             {problem.testcases.filter(tc => tc.visible).map((testCase, index) => (
                                                 <div key={index} className="border-2 border-gray-300 rounded-lg p-4 bg-gray-50">
-                                                    <h3 className="text-lg font-semibold text-black mb-3">
+                                                    <h3 className="text-base sm:text-lg font-semibold text-black mb-3">
                                                         Sample {index + 1}
                                                     </h3>
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -481,12 +481,12 @@ export default function ProblemDetail() {
                             </>
                         ) : (
                             /* Submissions View */
-                            <div className="bg-white rounded-lg p-6 border-2 border-black shadow-xl backdrop-blur-lg">
-                                <div className="flex items-center justify-between mb-6">
-                                    <h2 className="text-2xl font-bold text-black">Submissions</h2>
+                            <div className="bg-white rounded-lg p-4 sm:p-6 border-2 border-black shadow-xl backdrop-blur-lg">
+                                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-4">
+                                    <h2 className="text-xl sm:text-2xl font-bold text-black">Submissions</h2>
                                     <button
                                         onClick={() => setShowSubmissions(false)}
-                                        className="px-3 py-1.5 bg-white text-black border-2 border-black rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium flex items-center gap-2"
+                                        className="px-3 py-1.5 bg-white text_black border-2 border_black rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium flex items-center gap-2"
                                     >
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -500,13 +500,13 @@ export default function ProblemDetail() {
                     </div>
 
                     {/* Right Column - Code Editor */}
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                         {/* Code Editor */}
-                        <div className="bg-white rounded-lg border-2 border-black shadow-xl backdrop-blur-lg">
+                        <div className="bg-white rounded_lg border-2 border_black shadow_xl backdrop_blur_lg">
                             {/* Header */}
-                            <div className="bg-gray-50 px-4 py-3 border-b-2 border-gray-200 rounded-t-lg">
-                                <div className="flex justify-between items-center">
-                                    <div className="flex items-center space-x-3">
+                            <div className="bg-gray-50 px-4 py-3 border_b-2 border_gray-200 rounded_t_lg">
+                                <div className="flex justify_between items_center">
+                                    <div className="flex items_center space_x_3">
                                         <h3 className="text-lg font-semibold text-black">Code Editor</h3>
                                         <select
                                             value={selectedLanguage}
@@ -650,7 +650,7 @@ export default function ProblemDetail() {
 
                         {/* Custom Input */}
                         <div className="bg-white rounded-lg border-2 border-black shadow-xl backdrop-blur-lg">
-                            <div className="bg-gray-50 px-4 py-3 border-b-2 border-gray-200 rounded-t-lg">
+                            <div className="bg-gray-50 px-4 py-3 border-2 border-gray-200 rounded-t-lg">
                                 <h3 className="text-lg font-semibold text-black">Custom Input</h3>
                             </div>
                             <div className="p-4">
@@ -665,7 +665,7 @@ export default function ProblemDetail() {
 
                         {/* Output */}
                         <div className="bg-white rounded-lg border-2 border-black shadow-xl backdrop-blur-lg">
-                            <div className="bg-gray-50 px-4 py-3 border-b-2 border-gray-200 rounded-t-lg">
+                            <div className="bg-gray-50 px-4 py-3 border-2 border-gray-200 rounded-t-lg">
                                 <h3 className="text-lg font-semibold text-black">Output</h3>
                             </div>
                             <div className="p-4 min-h-[100px]">
@@ -686,7 +686,7 @@ export default function ProblemDetail() {
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm">
                     <div className="bg-white rounded-lg max-w-4xl w-full mx-4 h-[80vh] border-2 border-black shadow-xl flex flex-col">
                         {/* Modal Header */}
-                        <div className="flex justify-between items-center p-6 border-b-2 border-gray-200 bg-gray-50 rounded-t-lg">
+                        <div className="flex justify-between items-center p-6 border-2 border-gray-200 bg-gray-50 rounded-t-lg">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
                                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -694,8 +694,8 @@ export default function ProblemDetail() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-black">AI Code Review</h3>
-                                    <p className="text-gray-600 text-sm">Get intelligent feedback on your code</p>
+                                    <h3 className="text-lg sm:text-xl font-bold text-black">AI Code Review</h3>
+                                    <p className="text-gray-600 text-xs sm:text-sm">Get intelligent feedback on your code</p>
                                 </div>
                             </div>
                             <button
@@ -718,8 +718,8 @@ export default function ProblemDetail() {
                         </div>
                         
                         {/* Modal Footer */}
-                        <div className="p-4 border-t-2 border-gray-200 bg-gray-50 rounded-b-lg">
-                            <div className="flex justify-between items-center">
+                        <div className="p-4 border-2 border-gray-200 bg-gray-50 rounded-b-lg">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                                 <p className="text-gray-600 text-sm">
                                     Language: <span className="font-medium text-black">{selectedLanguage.toUpperCase()}</span>
                                 </p>

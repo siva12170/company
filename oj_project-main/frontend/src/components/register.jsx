@@ -64,8 +64,8 @@ export default function Register({ onToggleForm }) {
     
   return (
     <div className="p-8">
-      <h2 className="text-3xl font-bold text-center mb-2 text-black">Create Account</h2>
-      <p className="text-center text-gray-600 mb-8">Sign up to get started</p>
+      <h2 className="text-3xl font-bold text-center mb-2 text-black">Add Memeber</h2>
+      <p className="text-center text-gray-600 mb-8">Fill details to become dev</p>
       
       <form onSubmit={handleSubmit}>
         <InputField 
@@ -80,7 +80,7 @@ export default function Register({ onToggleForm }) {
           icon={UserIcon} 
           type="text" 
           name="username" 
-          placeholder="Username" 
+          placeholder="Dev name" 
           onChange={handleChange} 
         />
         <InputField 
@@ -95,7 +95,7 @@ export default function Register({ onToggleForm }) {
           icon={LockIcon} 
           type="password" 
           name="password" 
-          placeholder="Password" 
+          placeholder="Secret Key" 
           isPassword={true} 
           onChange={handleChange} 
         />
@@ -130,7 +130,7 @@ export default function Register({ onToggleForm }) {
                   </span>
                 </div>
                 <p className="text-xs text-gray-600 mt-1">
-                  Solve problems, participate in contests, and track your progress
+                  Solve Quests, participate in contests, and track your progress
                 </p>
               </div>
             </div>
@@ -183,12 +183,12 @@ export default function Register({ onToggleForm }) {
       </form>
 
       <p className="text-center text-gray-600 mt-8">
-        Already have an account?
+        Already a dev?
         <a 
           href="/auth"
           className="font-semibold text-black hover:text-gray-700 ml-2 focus:outline-none border-b border-transparent hover:border-black transition duration-300"
         >
-          Login
+          Enter
         </a>
       </p>
       <ToastContainer />

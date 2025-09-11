@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
 
     // Show loading screen during authentication check
     if (isLoading) {
-        return <RouteLoader message="Verifying authentication..." />;
+        return <RouteLoader message="Good things take time... hang tight!..." />;
     }
 
     const value = {

@@ -27,6 +27,9 @@ import { AuthProvider, useAuth } from './contexts/AuthContext.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import RouteWrapper from './components/RouteWrapper.jsx';
 import { ToastProvider } from './components/Toast.jsx';
+import About from './pages/About.jsx';
+import Careers from './pages/Careers.jsx';
+import Contact from './pages/Contact.jsx';
 
 function AppContent() {
   const { isAuthenticated } = useAuth();
@@ -41,6 +44,30 @@ function AppContent() {
             element={
               <RouteWrapper title="Home">
                 <Home />
+              </RouteWrapper>
+            } 
+          />
+          <Route 
+            path='/about' 
+            element={
+              <RouteWrapper title="About">
+                <About />
+              </RouteWrapper>
+            } 
+          />
+          <Route 
+            path='/careers' 
+            element={
+              <RouteWrapper title="Careers">
+                <Careers />
+              </RouteWrapper>
+            } 
+          />
+          <Route 
+            path='/contact' 
+            element={
+              <RouteWrapper title="Contact">
+                <Contact />
               </RouteWrapper>
             } 
           />
@@ -105,16 +132,20 @@ function AppContent() {
             element={<PrivateRoute element={<CreatorDashboard user={{ _id: 'creator1' }} />} title="Creator Communication" />} 
           />
           <Route 
-            path='/dashboard/accept-topics' 
+            path='/accept-topics' 
             element={<PrivateRoute element={<AcceptTopics />} title="Accept Topics" />} 
           />
           <Route 
-            path='/dashboard/post-topic' 
+            path='/post-topic' 
             element={<PrivateRoute element={<PostTopic />} title="Post Topic" />} 
           />
           <Route 
-            path='/dashboard/messages' 
-            element={<PrivateRoute element={<Messaging />} title="Messaging" />} 
+            path='/messages' 
+            element={
+              <RouteWrapper title="Messaging">
+                <Messaging />
+              </RouteWrapper>
+            } 
           />
           {/* Admin Routes */}
           <Route 

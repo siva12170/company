@@ -48,7 +48,7 @@ export default function Login({ onToggleForm }) {
       console.log('Login response:', result);
       
       if (response.ok && result.success) {
-        handleSuccess("Login successful!");
+        handleSuccess("Entered successfully!");
         login(result.data.user);
         
         setTimeout(() => {
@@ -68,14 +68,14 @@ export default function Login({ onToggleForm }) {
   return (
     <div className="p-8">
       <h2 className="text-3xl font-bold text-center mb-2 text-black">Welcome Back</h2>
-      <p className="text-center text-gray-600 mb-8">Login to access your dashboard</p>
+      <p className="text-center text-gray-600 mb-8">Enter to access your dashboard</p>
       
       <form onSubmit={handleSubmit}>
         <InputField 
           icon={UserIcon} 
           type="text" 
           name="email" 
-          placeholder="Username or Email" 
+          placeholder="Dev name or Email" 
           onChange={handleChange} 
           autoFocus={true} 
         />
@@ -83,7 +83,7 @@ export default function Login({ onToggleForm }) {
           icon={LockIcon} 
           type="password" 
           name="password" 
-          placeholder="Password" 
+          placeholder="Secret Key" 
           isPassword={true} 
           onChange={handleChange} 
         />
@@ -99,18 +99,18 @@ export default function Login({ onToggleForm }) {
           disabled={isSubmitting}
           className={`w-full mt-6 font-bold py-3 rounded-lg transition duration-300 transform shadow-lg hover:shadow-xl bg-black hover:bg-gray-800 text-white hover:scale-105`}
         >
-          {isSubmitting ? 'Logging in...' : 'Login'}
+          {isSubmitting ? 'Entering...' : 'Enter'}
         </button>
       </form>
 
       <p className="text-center text-gray-600 mt-8">
-        Don't have an account?
+        Not a dev?
         <a 
           href="/signup"
           className="font-semibold text-black hover:text-gray-700 ml-2 focus:outline-none border-b border-transparent hover:border-black transition duration-300"
         >
-          Sign Up
-        </a>
+          {/* Sign Up */} Become dev
+         </a>
       </p>
       <ToastContainer />
     </div>

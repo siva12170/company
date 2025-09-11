@@ -64,6 +64,7 @@ import problemRouter from "./routes/problem.routes.js"
 import submissionRouter from "./routes/submission.routes.js"
 import topicRoutes from './routes/topicRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
+import publicMessageRoutes from './routes/publicMessageRoutes.js';
 import adminRouter from './routes/admin.routes.js';
 import contestRouter from './routes/contest.routes.js';
 
@@ -73,6 +74,7 @@ app.use("/api/v1/problems", problemRouter)
 app.use("/api/v1/submissions", submissionRouter)
 app.use("/api/v1/topics", topicRoutes);
 app.use("/api/v1/messages", messageRoutes);
+app.use("/api/v1/public-messages", publicMessageRoutes);
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/contests", contestRouter);
 

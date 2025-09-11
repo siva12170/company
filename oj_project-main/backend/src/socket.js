@@ -3,6 +3,7 @@ import http from 'http';
 import Message from './models/Message.js';
 import Topic from './models/Topic.js';
 import { setIO } from './socketInstance.js';
+import PublicMessage from './models/PublicMessage.js';
 
 export default function setupSocket(server) {
   const io = new Server(server, {
@@ -16,6 +17,21 @@ export default function setupSocket(server) {
   setIO(io);
 
   io.on('connection', (socket) => {
+    // Public chat: anyone can join and send messages (now persisted)
+    socket.on('public:join', () => {
+      socket.join('public');
+    });
+
+    socket.on('public:send', async ({ senderUsername, message }) => {
+      try {
+        if (!message || typeof message !== 'string') return;
+        const saved = await PublicMessage.create({
+          message,
+          senderUsername: senderUsername || 'Guest'
+        });
+        io.to('public').emit('public:newMessage', saved);
+      } catch {}
+    });
     // contests: join room for specific contest leaderboard updates
     socket.on('contest:join', ({ contestId }) => {
       if (contestId) socket.join(`contest_${contestId}`);

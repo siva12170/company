@@ -95,7 +95,7 @@ const Profile = () => {
         return (
             <div className="min-h-screen bg-white flex items-center justify-center">
                 <div className="text-center">
-                    <h2 className="text-2xl font-bold text-black mb-4">Profile not found</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-black mb-4">Profile not found</h2>
                     <button 
                         onClick={() => navigate('/dashboard')}
                         className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
@@ -108,16 +108,16 @@ const Profile = () => {
     }
 
     return (
-        <div className="min-h-screen bg-white pt-20 pb-8 relative overflow-hidden">
+        <div className="min-h-screen bg-white pt-16 sm:pt-20 pb-8 relative overflow-hidden">
             {/* Background with blur effects */}
             <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
             <div className="absolute inset-0 backdrop-blur-sm"></div>
             <div className="absolute left-1/4 top-1/4 w-[200px] h-[200px] rounded-full bg-black opacity-5 blur-[80px]"></div>
             <div className="absolute right-1/4 bottom-1/4 w-[150px] h-[150px] rounded-full bg-gray-400 opacity-10 blur-[60px]"></div>
             
-            <div className="relative container mx-auto px-6 max-w-4xl">
+            <div className="relative container mx-auto px-4 sm:px-6 max-w-4xl">
                 {/* Profile Header */}
-                <div className="bg-white rounded-lg p-8 mb-8 border-2 border-black shadow-xl backdrop-blur-lg">
+                <div className="bg-white rounded-lg p-6 sm:p-8 mb-8 border-2 border-black shadow-xl backdrop-blur-lg">
                     <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
                         {/* Avatar Section */}
                         <div className="relative">
@@ -133,16 +133,16 @@ const Profile = () => {
                         {/* User Info */}
                         <div className="flex-1 text-center md:text-left">
                             <div>
-                                <h1 className="text-4xl font-bold text-black mb-3">{user.fullName}</h1>
-                                <p className="text-xl text-gray-700 mb-3">@{user.username}</p>
-                                <p className="text-gray-600">{user.email}</p>
+                                <h1 className="text-3xl sm:text-4xl font-bold text-black mb-3 break-words">{user.fullName}</h1>
+                                <p className="text-lg sm:text-xl text-gray-700 mb-3 break-words">@{user.username}</p>
+                                <p className="text-gray-600 break-words">{user.email}</p>
                             </div>
 
                             {/* Action Buttons */}
                             <div className="mt-6 flex flex-col sm:flex-row gap-3">
                                 <button
                                     onClick={() => navigate('/edit-profile')}
-                                    className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                                    className="px-6 sm:px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                                 >
                                     Edit Profile
                                 </button>
@@ -152,14 +152,14 @@ const Profile = () => {
                 </div>
 
                 {/* Profile Details */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8">
                     {/* Personal Information */}
-                    <div className="bg-white rounded-lg p-8 border-2 border-black shadow-xl backdrop-blur-lg">
-                        <h2 className="text-2xl font-bold text-black mb-6 border-b-2 border-gray-200 pb-2">Personal Information</h2>
+                    <div className="bg-white rounded-lg p-6 sm:p-8 border-2 border-black shadow-xl backdrop-blur-lg">
+                        <h2 className="text-xl sm:text-2xl font-bold text-black mb-6 border-b-2 border-gray-200 pb-2">Personal Information</h2>
                         <div className="space-y-6">
                             <div>
                                 <label className="block text-sm font-medium text-black mb-2">Email</label>
-                                <p className="text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200">{user.email}</p>
+                                <p className="text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200 break-words">{user.email}</p>
                             </div>
 
                             <div>
@@ -169,12 +169,12 @@ const Profile = () => {
 
                             <div>
                                 <label className="block text-sm font-medium text-black mb-2">Location</label>
-                                <p className="text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200">{user.location || 'Not specified'}</p>
+                                <p className="text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200 break-words">{user.location || 'Not specified'}</p>
                             </div>
 
                             <div>
                                 <label className="block text-sm font-medium text-black mb-2">Website</label>
-                                <p className="text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200">
+                                <p className="text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200 break-words">
                                     {user.website ? (
                                         <a 
                                             href={user.website} 
@@ -193,8 +193,8 @@ const Profile = () => {
                     </div>
 
                     {/* Statistics */}
-                    <div className="bg-white rounded-lg p-8 border-2 border-black shadow-xl backdrop-blur-lg">
-                        <h2 className="text-2xl font-bold text-black mb-6 border-b-2 border-gray-200 pb-2">Statistics</h2>
+                    <div className="bg-white rounded-lg p-6 sm:p-8 border-2 border-black shadow-xl backdrop-blur-lg">
+                        <h2 className="text-xl sm:text-2xl font-bold text-black mb-6 border-b-2 border-gray-200 pb-2">Statistics</h2>
                         <ProfileStats userId={user._id} />
                     </div>
                 </div>
@@ -205,8 +205,8 @@ const Profile = () => {
                 </div>
 
                 {/* Account Information */}
-                <div className="bg-white rounded-lg p-8 border-2 border-black shadow-xl backdrop-blur-lg">
-                    <h2 className="text-2xl font-bold text-black mb-6 border-b-2 border-gray-200 pb-2">Account Information</h2>
+                <div className="bg-white rounded-lg p-6 sm:p-8 border-2 border-black shadow-xl backdrop-blur-lg">
+                    <h2 className="text-xl sm:text-2xl font-bold text-black mb-6 border-b-2 border-gray-200 pb-2">Account Information</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-sm font-medium text-black mb-2">Account Type</label>

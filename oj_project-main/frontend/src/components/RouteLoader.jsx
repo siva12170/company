@@ -44,7 +44,7 @@ const RouteLoader = ({ message = "Loading..." }) => {
                 {/* Brand identifier */}
                 <div className="mt-8 animate-fade-in-delayed">
                     <p className="text-gray-600 text-sm font-medium">
-                        <span className="border-b-2 border-black">CodeJudge</span>
+                        <span className="border-b-2 border-black">"Om" or "Aum" //in//en</span>
                     </p>
                 </div>
             </div>
